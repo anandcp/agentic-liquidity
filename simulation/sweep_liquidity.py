@@ -1,35 +1,59 @@
 import numpy as np
 from env_liquidity import LiquidityEnv
 import pandas as pd
+import json
+import os
 
-def run_sweep(connectivities=np.linspace(0.1, 0.95, 15), seeds=5):
+def load_config():
+    cfg_path = os.path.join("..", "configs", "sim_config.json")
+    if os.path.exists(cfg_path):
+        with open(cfg_path, "r") as f:
+            return json.load(f)
+    return None
+
+def run_sweep(connectivities, seeds):
     rows = []
 
-    for p in connectivities:
+    for L in connectivities:
         eff_list = []
 
-        for s in range(seeds):
-            env = LiquidityEnv(n_agents=100, base_connectivity=p)
+        for s in seeds:
+            np.random.seed(s)
+            env = LiquidityEnv(n_agents=100, base_connectivity=L)
             obs = env.reset()
 
             done = False
             while not done:
-                # random policy (replace with PPO for full version)
                 actions = np.random.randint(0, 4, env.n_agents)
                 obs, reward, done, info = env.step(actions)
 
             eff_list.append(np.mean(env.global_efficiency))
 
         rows.append({
-            "p": p,
-            "eff_mean": np.mean(eff_list),
-            "eff_std": np.std(eff_list),
+            "L": p,
+            "efficiency": np.mean(eff_list),
+            "stddev": np.std(eff_list),
+            "notes": ""
         })
 
     return pd.DataFrame(rows)
 
-
 if __name__ == "__main__":
-    df = run_sweep()
-    df.to_csv("../data/liquidity_efficiency_curve.csv", index=False)
-    print("Saved sweep results → data/liquidity_efficiency_curve.csv")
+    cfg = load_config()
+
+    if cfg is not None:
+        start = cfg.get("sweep_start", 0.10)
+        end = cfg.get("sweep_end", 0.95)
+        points = cfg.get("sweep_points", 15)
+        seeds = cfg.get("seeds", [42, 123, 888, 2025, 9001])
+        output = cfg.get("sweep_output", "../data/liquidity_efficiency_curve.csv")
+    else:
+        start, end, points = 0.10, 0.95, 15
+        seeds = [42, 123, 888, 2025, 9001]
+        output = "../data/liquidity_efficiency_curve.csv"
+
+    connectivities = np.linspace(start, end, points)
+
+    df = run_sweep(connectivities, seeds)
+    df.to_csv(output, index=False)
+    print(f"Saved sweep results → {output}")

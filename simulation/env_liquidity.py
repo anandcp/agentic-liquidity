@@ -48,7 +48,14 @@ class LiquidityEnv:
         """
         neighbor_flags = (np.sum(self.adj, axis=1) > 0).astype(float)
         L = np.mean(neighbor_flags)  # simple proxy for demonstration
-
+        # NOTE:
+        # The liquidity value (L) used here is a simplified proxy based on adjacency/connectivity.
+        # In the full empirical framework described in the paper, liquidity is defined as:
+        #     realized_exchanges / system_capacity
+        # which depends on dynamic exchange events, adaptation latency, and model reuse cycles.
+        # This environment uses a static connectivity-based approximation to ensure
+        # reproducibility, speed, and deterministic behavior during sweeps.
+        # The full empirical liquidity metric is implemented only in the panel-generation code.
         obs = np.stack([
             self.queue,
             self.throughput,

@@ -1,8 +1,16 @@
+import sys
+import os
+
+# Ensure repository root is in PYTHONPATH for CI environments
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
 import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
 
 def test_regression_runs():
+    np.random.seed(42)
     df = pd.DataFrame({
         "Lg": np.linspace(0.1, 0.9, 20),
         "contributor_growth": np.random.normal(0, 0.05, 20),
@@ -18,7 +26,6 @@ def test_regression_runs():
 
     assert "Lg" in model.params
     assert "Lg2" in model.params
-
     a = model.params["Lg2"]
     b = model.params["Lg"]
     turning_point = -b / (2 * a)
