@@ -1,7 +1,17 @@
+import sys
+import os
+
+# Ensure repository root is in PYTHONPATH for CI environments
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
 import pandas as pd
 from analysis.generate_repo_panel import generate_repo_panel
 
 def test_panel_structure():
+    import numpy as np
+    np.random.seed(42)
     df = generate_repo_panel(n_repos=5, n_months=3)
 
     required_cols = [
