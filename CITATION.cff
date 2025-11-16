@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as follows."
+title: "Agentic Liquidity: Code, Data, and Simulation Environment"
+abstract: >
+  This repository contains the full empirical pipeline, simulation environment,
+  regression scripts, and data required to reproduce the results in the paper
+  'Agentic Liquidity: Economic Modeling of Interoperability and Systemic Risk in
+  AI Ecosystems'. It includes model-hub panel generation, quadratic regression,
+  liquidity sweep experiments, and multi-agent simulation code.
+authors:
+  - family-names: "P Codangudi"
+    given-names: "Anandasubramanian"
+    email: "hidden"
+    affiliation: "VELS University; Banking Transformation"
+version: "1.0.0"
+license: "MIT"
+repository-code: "https://github.com/anandcp/agentic-liquidity"
+keywords:
+  - agentic liquidity
+  - interoperability
+  - AI ecosystems
+  - systemic risk
+  - MARL
+  - model hubs
+date-released: "2025-01-01"
+identifiers:
+  - type: doi
+    value: "TBD"

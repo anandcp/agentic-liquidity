@@ -1,0 +1,7 @@
+repo_id,month,downloads,reuse_events,reuse_rate,adapt_latency,Lg,contributor_growth,age_months,org_flag,modality
+repo_0001,2023-01,1200,3,2.5,9,0.227,0.015,1,1,llm
+repo_0001,2023-02,1500,5,3.3,8,0.367,0.026,2,1,llm
+repo_0001,2023-03,1800,6,3.3,7,0.412,0.034,3,1,llm
+repo_0002,2023-01,900,2,2.2,11,0.167,-0.002,1,0,vision
+repo_0002,2023-02,1000,3,3.0,10,0.273,0.011,2,0,vision
+repo_0002,2023-03,1200,4,3.3,8,0.367,0.022,3,0,vision

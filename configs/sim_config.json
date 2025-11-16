@@ -1,0 +1,12 @@
+{
+  "n_agents": 100,
+  "episode_len": 150,
+  "base_connectivity": 0.50,
+  "shock_prob": 0.03,
+  "shock_duration": 8,
+  "sweep_points": 15,
+  "sweep_start": 0.10,
+  "sweep_end": 0.95,
+  "seeds": [42, 123, 888, 2025, 9001],
+  "sweep_output": "../data/liquidity_efficiency_curve.csv"
+}

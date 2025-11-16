@@ -1,0 +1,16 @@
+L,efficiency,stddev,notes
+0.10,0.22,0.05,Low-connectivity regime
+0.15,0.30,0.06,-
+0.20,0.38,0.06,-
+0.30,0.51,0.07,-
+0.40,0.63,0.07,Approaching optimal
+0.50,0.74,0.05,Peak begins
+0.55,0.77,0.05,-
+0.60,0.79,0.04,Near optimal
+0.65,0.80,0.04,Turning point
+0.70,0.78,0.05,Decline begins
+0.75,0.72,0.05,-
+0.80,0.65,0.06,-
+0.85,0.52,0.07,High synchronization
+0.90,0.40,0.08,Fragility onset
+0.95,0.34,0.09,Collapse regime

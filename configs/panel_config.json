@@ -1,0 +1,11 @@
+{
+  "n_repos": 50,
+  "n_months": 12,
+  "base_download_min": 500,
+  "base_download_max": 15000,
+  "reuse_scaling": 1000,
+  "latency_base": 12,
+  "latency_scale": 4,
+  "growth_scale": 0.03,
+  "panel_output": "../data/sample_repo_panel.csv"
+}
